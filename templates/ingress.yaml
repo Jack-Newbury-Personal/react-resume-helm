@@ -1,8 +1,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: { { .values.releaseName } }-https-gateway
-  namespace: { { .values.namespace } }
+  name: {{ .Values.releaseName }}-https-gateway
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     istio: ingress
@@ -13,9 +13,9 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: { { .values.releaseName } }-cert-tls
+        credentialName: {{ .Values.releaseName }}-cert-tls
       hosts:
-        - { { .values.dnsName } }
+        - {{ .Values.dnsName }}
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -24,15 +24,15 @@ metadata:
   namespace: grafana
 spec:
   hosts:
-    - { { .values.dnsName } }
+    - {{ .Values.dnsName }}
   gateways:
-    - { { .values.releaseName } }-https-gateway
+    - {{ .Values.releaseName }}-https-gateway
   http:
     - match:
         - uri:
             prefix: /
       route:
         - destination:
-            host: { { .values.releaseName } }
+            host: {{ .Values.releaseName }}
             port:
               number: 80

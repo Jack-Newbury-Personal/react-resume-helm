@@ -1,11 +1,11 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: { { .values.releaseName } }-cert
+  name: {{ .Values.releaseName }}-cert
   namespace: istio-ingress
 spec:
   dnsNames:
-    - { { .values.dnsName } }
-  secretName: { { .values.releaseName } }-cert-tls
+    - {{ .Values.dnsName }}
+  secretName: {{ .Values.releaseName }}-cert-tls
   issuerRef:
     name: jack-newbury-selfsigned

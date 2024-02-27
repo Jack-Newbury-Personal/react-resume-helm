@@ -1,0 +1,9 @@
+releaseName: react-resume
+
+image: jacknewbury/react-resume:1.0
+
+containerPort: 3000
+
+namespace: resume
+
+dnsName: resume.jack-newbury.co.uk

@@ -1,6 +1,6 @@
 releaseName: react-resume
 
-image: jacknewbury/react-resume:1.0
+image: jacknewbury/react-resume:1.1
 
 containerPort: 3000
 
